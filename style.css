@@ -1,0 +1,323 @@
+html { box-sizing: border-box; }
+*, :after, :before { box-sizing: inherit; }
+
+/*-----------------------*/
+
+/*
+ BARVY
+ pozadi           #f5f5f5
+ dekorace nadpisů #629edb
+*/
+
+@font-face {
+    font-family: merriweather;
+    src: url('fonts/Merriweather/Merriweather-Regular.ttf');
+}
+
+@font-face {
+    font-family: raleway;
+    src: url('fonts/Raleway/Raleway-VariableFont_wght.ttf');
+}
+    
+
+body {
+    padding: 0px;
+    background-color:#f5f5f5;
+    font-family: 'Merriweather', serif;
+    font-size: 16px;
+    line-height: 1.6;
+    align-items: center;
+}
+
+.stin {
+    box-shadow: 2px 2px 10px 2px rgba(0, 0, 0, 0.333);
+    background: white;
+}
+
+.uvod{
+    display: block;
+    align-items: center;
+    padding: 20px 10px 20px 10px;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.400), rgba(0, 0, 0, 0.34)),url("images/island-hlavicka.jpg");
+    background-repeat: no-repeat;
+    background-position: 0%;
+    background-size: cover;
+}
+
+.titulek {
+    font-family: 'Raleway', serif;
+    font-size: 3rem;
+    text-align: center;
+    color: white;
+}
+
+.uvodnik {
+    text-align: center;
+    color: white;
+    padding: 0 30px 0 30px;
+}
+
+.autorka {
+    font-style: italic;
+    color: rgba(214, 214, 214, 0.51);
+    font-size: 1rem;
+    padding: 30px 0 20px 0;    
+}
+
+/*.autorka::before{
+    content: "______";
+    display: block;
+    padding: 10px;
+}*/
+
+.autorka::before{
+    content: " ";
+    display: block;
+    border-top: solid 4px rgba(214, 214, 214, 0.51);
+    max-width: 80px;
+    padding-top: 20px;
+    align-content: center;
+    margin: 0 auto;
+    position: relative;
+} 
+
+nav{
+    display: flex;  
+    justify-content: center; 
+    padding-top: 20px;
+}
+
+ul{
+    padding: 0 20px 0 20px;
+    min-width: 100%;
+}
+
+li {
+    list-style: none;
+    font-family: raleway;
+    color: rgb(152, 152, 152);
+    padding: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    border-bottom: solid 1px #f5f5f5;
+}
+
+h3{
+    font-size: 2rem;
+    font-family: raleway;
+    /*chci sem dodat padding left 10 px, ale s tím se posune i modré podtržení, které chci, aby zůstalo bez paddingu. JAK TO MÁM UDĚLAT???*/
+}
+
+h3::after{
+    content: " ";
+    display: block;
+    border-bottom: solid 4px #629edb;
+    max-width: 80px;
+    padding-top: 20px;
+    }
+
+/*.obsah{
+    display: block;  
+}*/
+
+p{
+    padding: 10px;
+}
+
+.popisek {
+    font-family: 'Raleway', serif;
+    font-size: 0.8rem;
+    color:  rgb(152, 152, 152);
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+a{
+    color: rgb(152, 152, 152);
+}
+
+img{
+    min-width: 100%;
+    max-width: 100%;
+}
+
+.fotogalerie{
+    justify-content: center;
+    padding: 0px;
+    margin: 0px;
+} 
+/* U OBRÁZKŮ VE FOTOGALERII MÁM BÍLOU LINKU DOLE, NEVÍM, JAK SE JÍ ZBAVIT*/
+
+.fotogalerie .popisek::first-line{
+    font-weight: 600;
+}
+
+footer {
+    text-align: left;
+    color: rgb(174, 174, 174);
+    padding: 10px;
+    font-size: 0.7rem;
+    padding: 30px 10px 30px 10px;
+}
+
+@media (min-width: 630px) {
+
+   nav{
+        min-width: 100%;
+    }
+
+    .navigace {
+        align-items: center;
+    }
+
+    ul{
+        min-width: 0%;
+        overflow: auto;
+    }
+    
+    li {
+        float: left;
+        border: 1px solid #f5f5f5;
+        border-left: none;
+        min-width: 100px;
+        flex-wrap: nowrap;
+    }
+
+    li:last-child {
+        border-right: none;
+    }
+
+    .kontejner {
+        position: relative;
+        color: white;
+        overflow: hidden;
+        flex-grow: 1;
+    }
+              
+    .popisek {
+        position: absolute;
+        bottom: 8px;
+        right: 16px;
+        color: white;
+    }
+
+    .fotogalerie,.stin a {
+          color: white;
+    }
+
+    .fotogalerie {
+        display: flex;
+        flex-direction: row; 
+        flex-wrap: wrap;
+    }
+
+    .fotogalerie .kontejner{
+        display: flex;
+        flex-grow: 1;
+        width: calc(1/2*100%);
+    }
+
+    .fotogalerie .kontejner:last-child{
+        display: flex;
+        align-self: flex-start;
+        flex-grow: unset;
+    }
+   /* SNAŽÍM SE ZAROVNAT POSLEDNÍ FOTKU DOLEVA. NEJDE.*/
+
+    .overlay {
+        position: absolute;
+        bottom: 0;
+        background: rgb(0, 0, 0);
+        background: rgba(0, 0, 0, 0.5); 
+        width: 100%;
+        transition: .5s ease;
+        opacity:0;
+        color: white;
+        font-size: 20px;
+        padding: 20px;
+        margin: 0px -16px 7px 0px;
+        text-align: center;
+        font-family: 'Raleway', serif;
+        font-size: 0.8rem;   
+    }
+
+    .kontejner:hover .overlay {
+        opacity: 1;
+    }
+
+    .fotogalerie .kontejner img:hover{
+        transform: scale(1.5);
+        transition: all 2s;
+    }        
+
+}
+
+@media (min-width: 1000px) {
+    
+    .stin {
+       max-width: 1000px;
+       margin: auto;
+    }
+    
+    .fotogalerie .kontejner{
+        display: flex;
+        flex-grow: 1;
+        width: calc(1/3*100%);
+    }
+    
+    .zarovnani {
+        max-width: 1000px;
+        margin:auto;
+    }
+    
+    .popis.levy {
+        margin-left: 300px;
+    }
+
+    .popis.pravy {
+        margin-right: 300px;
+    }
+  
+    body {
+        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.400), rgba(0, 0, 0, 0)),url("images/island-hlavicka.jpg");
+        background-repeat: no-repeat;
+        background-size: contain;   
+    }
+    /*nevím, jak nastavit, aby se gradient aplikoval jen na background-image a ne na celou stránku*/
+
+    .uvod{
+        background-image: none;
+        background-color:transparent;
+    }
+    
+    li{
+        float: none;
+        text-align: left;
+        border-left: none;
+        border-right: none;
+        border-top: none;
+    }
+    
+    nav{
+        justify-content: start;
+        padding: 20px;
+    }
+
+    .navigace{
+        margin: 40px 40px 0px 40px;
+        position: relative;
+    }
+
+    .desktop{
+        display: block;
+    }
+    
+    .popis.levy.prvni{
+        /*nevím, jak tenhle blok textu dostat vedle navigace*/
+        
+    }
+    
+}
+    
+
+
